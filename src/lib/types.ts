@@ -17,7 +17,8 @@ export type Appointment = {
   telefono: string;
   email: string;
   service_id: string | null;
-  modalidad: "consultorio" | "domicilio";
+  zona: string;
+  direccion: string;
   fecha: string;
   hora: string;
   motivo: string | null;

@@ -77,7 +77,7 @@ export function Hero() {
             className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-soft"
           >
             {[
-              "Consultorio y a domicilio",
+              "Atención a domicilio",
               "Plan de tratamiento individualizado",
               "Atención cercana y profesional",
             ].map((t) => (

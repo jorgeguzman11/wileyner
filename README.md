@@ -158,8 +158,8 @@ Revisa y reemplaza antes de publicar:
 - [ ] **Horario real** → el negocio indicó “todos los días”. Se dejó
       08:00–18:00 con turnos de 45 min. Ajusta la tabla `availability` en
       `supabase/schema.sql` y el texto `horarioTexto` en `site-config.ts`.
-- [ ] **Dirección del consultorio** → `direccion` y `mapaEmbedUrl` en
-      `site-config.ts` (usa el enlace *embed* de Google Maps).
+- [ ] **Zonas de cobertura** → la atención es 100% a domicilio; revisa la
+      lista `zonas` en `site-config.ts` (Caracas, Guarenas, Guatire, Los Teques).
 - [ ] **Correo de contacto** → `email` en `site-config.ts`.
 - [ ] **Testimonios de ejemplo** → los del seed entran como *no aprobados* y no
       se muestran. Publica solo testimonios reales desde `/admin`.

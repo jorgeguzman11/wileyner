@@ -6,7 +6,7 @@ const pasos = [
     n: "01",
     titulo: "Agendas tu cita",
     texto:
-      "Eliges servicio, modalidad, fecha y hora en pocos pasos. Confirmas por WhatsApp con un mensaje ya preparado.",
+      "Eliges el servicio, tu zona, la fecha y la hora en pocos pasos. Confirmas por WhatsApp con un mensaje ya preparado.",
   },
   {
     n: "02",

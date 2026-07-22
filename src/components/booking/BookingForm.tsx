@@ -6,13 +6,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { appointmentSchema, type AppointmentInput } from "@/lib/schemas";
 import { services } from "@/content/services";
+import { site } from "@/lib/site-config";
 import { Label, Input, Select, Textarea, FieldError } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { DatePicker } from "./DatePicker";
 import { TimeSlots } from "./TimeSlots";
 import { Confirmacion } from "./Confirmacion";
 import { Spinner } from "@/components/ui/icons";
-import { cn } from "@/lib/cn";
 
 type Enviada = AppointmentInput;
 
@@ -36,7 +36,8 @@ export function BookingForm() {
       telefono: "",
       email: "",
       servicio: undefined,
-      modalidad: undefined,
+      zona: undefined,
+      direccion: "",
       fecha: "",
       hora: "",
       motivo: "",
@@ -156,39 +157,47 @@ export function BookingForm() {
           <FieldError id="servicio-error" message={errors.servicio?.message} />
         </div>
 
+      </fieldset>
+
+      {/* Dónde te atiendo (atención 100% a domicilio) */}
+      <fieldset className="space-y-5">
+        <legend className="mb-2 font-display text-lg font-medium text-ink">
+          ¿Dónde te atiendo?
+        </legend>
+        <p className="-mt-1 text-sm text-ink-muted">
+          Voy hasta ti: la atención es a domicilio.
+        </p>
+
         <div>
-          <span className="mb-1.5 block text-sm font-medium text-ink-soft">
-            Modalidad <span className="text-accent-500" aria-hidden> *</span>
-          </span>
-          <Controller
-            control={control}
-            name="modalidad"
-            render={({ field }) => (
-              <div role="radiogroup" aria-label="Modalidad" className="grid grid-cols-2 gap-3">
-                {(["consultorio", "domicilio"] as const).map((m) => {
-                  const selected = field.value === m;
-                  return (
-                    <button
-                      key={m}
-                      type="button"
-                      role="radio"
-                      aria-checked={selected}
-                      onClick={() => field.onChange(m)}
-                      className={cn(
-                        "rounded-xl border px-4 py-3 text-sm font-medium capitalize transition-[transform,background-color,border-color,color] duration-150 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] motion-reduce:active:scale-100",
-                        selected
-                          ? "border-accent-500 bg-accent-50 text-accent-700"
-                          : "border-sand-300 bg-white text-ink hover:border-accent-300",
-                      )}
-                    >
-                      {m}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+          <Label htmlFor="zona" required>Zona</Label>
+          <Select
+            id="zona"
+            defaultValue=""
+            error={!!errors.zona}
+            aria-invalid={!!errors.zona}
+            aria-describedby={errors.zona ? "zona-error" : undefined}
+            {...register("zona")}
+          >
+            <option value="" disabled>Elige tu zona…</option>
+            {site.zonas.map((z) => (
+              <option key={z} value={z}>{z}</option>
+            ))}
+          </Select>
+          <FieldError id="zona-error" message={errors.zona?.message} />
+        </div>
+
+        <div>
+          <Label htmlFor="direccion" required>Dirección de la visita</Label>
+          <Input
+            id="direccion"
+            autoComplete="street-address"
+            placeholder="Calle, edificio/casa, piso y punto de referencia"
+            error={!!errors.direccion}
+            aria-invalid={!!errors.direccion}
+            aria-describedby={errors.direccion ? "direccion-error" : undefined}
+            {...register("direccion")}
           />
-          <FieldError id="modalidad-error" message={errors.modalidad?.message} />
+          <FieldError id="direccion-error" message={errors.direccion?.message} />
         </div>
       </fieldset>
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { Stars } from "@/components/ui/Stars";
-import { Whatsapp } from "@/components/ui/icons";
+import { Whatsapp, MapPin } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 import type { AdminAppointment } from "@/lib/admin-data";
 import type { Testimonial, EstadoCita } from "@/lib/types";
@@ -230,7 +230,11 @@ function AppointmentRow({
             {" · "}
             {c.servicio ?? "Servicio"}
             {" · "}
-            <span className="capitalize">{c.modalidad}</span>
+            {c.zona}
+          </p>
+          <p className="mt-1 flex items-start gap-1 text-sm text-ink-muted">
+            <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+            {c.direccion}
           </p>
           <p className="mt-1 text-sm text-ink-muted">
             <a

@@ -18,7 +18,7 @@ const fraunces = Fraunces({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tu-dominio.com";
 const tituloSeo = `${site.nombreCorto} · Fisioterapeuta en ${site.ciudadPrincipal}`;
-const descripcionSeo = `${site.titulo} en ${site.ciudadPrincipal}. Fisioterapia deportiva, traumatológica, geriátrica, neurológica y estimulación temprana. Atención en consultorio y a domicilio. Agenda tu cita.`;
+const descripcionSeo = `${site.titulo} en ${site.ciudadPrincipal}. Fisioterapia a domicilio: deportiva, traumatológica, geriátrica, neurológica y estimulación temprana. Voy hasta tu casa. Agenda tu cita.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -69,11 +69,15 @@ function LocalBusinessJsonLd() {
     priceRange: "$$",
     image: `${siteUrl}/og-image.jpg`,
     areaServed: site.zonas.map((z) => ({ "@type": "City", name: z })),
+    // Servicio 100% a domicilio: sin dirección física, solo localidad y país.
     address: {
       "@type": "PostalAddress",
       addressLocality: site.ciudadPrincipal,
       addressCountry: "VE",
-      streetAddress: site.direccion,
+    },
+    availableService: {
+      "@type": "Service",
+      serviceType: "Fisioterapia a domicilio",
     },
     sameAs: [site.instagramUrl],
     openingHours: "Mo-Su 08:00-18:00",

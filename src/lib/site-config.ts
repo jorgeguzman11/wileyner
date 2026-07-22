@@ -15,14 +15,11 @@ export const site = {
   propuestaValor:
     "Recupera tu movilidad sin restricciones con un plan de tratamiento hecho a tu medida.",
   subtitulo:
-    "Fisioterapia deportiva, traumatológica, geriátrica, neurológica y estimulación temprana — en consultorio y a domicilio.",
+    "Fisioterapia a domicilio: deportiva, traumatológica, geriátrica, neurológica y estimulación temprana. Voy hasta donde estés.",
 
-  // --- Zonas de atención ---
+  // --- Zonas de atención (atención 100% a domicilio) ---
   ciudadPrincipal: "Caracas",
   zonas: ["Caracas", "Guarenas", "Guatire", "Los Teques"],
-
-  // --- Modalidad ---
-  modalidades: ["consultorio", "domicilio"] as const,
 
   // --- Contacto ---
   whatsapp: "+584241759275", // se usa para el enlace wa.me
@@ -32,13 +29,6 @@ export const site = {
   instagramUrl: "https://instagram.com/wileynerrangel",
   // PLACEHOLDER: correo de contacto del profesional.
   email: "contacto@wileynerrangel.com",
-
-  // --- Ubicación / mapa ---
-  // PLACEHOLDER: dirección real del consultorio para el mapa embebido.
-  direccion: "{{DIRECCIÓN DEL CONSULTORIO}}, Caracas",
-  // PLACEHOLDER: reemplaza por el enlace "embed" de Google Maps del consultorio.
-  mapaEmbedUrl:
-    "https://www.google.com/maps?q=Caracas,Venezuela&output=embed",
 
   // --- Horario ---
   // PLACEHOLDER: el profesional indicó "todos los días". Se asumen horas
@@ -56,7 +46,8 @@ export const site = {
   ],
 } as const;
 
-export type Modalidad = (typeof site.modalidades)[number];
+// Zonas de cobertura como tupla para validación (zod).
+export const zonas = site.zonas as readonly string[];
 
 // Mensaje base de WhatsApp para el CTA secundario del Hero.
 export const whatsappGreeting =

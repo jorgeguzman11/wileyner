@@ -6,7 +6,7 @@ import { site } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Agendar cita",
-  description: `Agenda tu cita de fisioterapia con ${site.nombreCorto} en ${site.ciudadPrincipal}. Elige servicio, modalidad, fecha y hora.`,
+  description: `Agenda tu cita de fisioterapia a domicilio con ${site.nombreCorto} en ${site.ciudadPrincipal}. Elige servicio, zona, fecha y hora.`,
   alternates: { canonical: "/agendar" },
 };
 

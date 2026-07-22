@@ -15,7 +15,8 @@ export type AppointmentSummary = {
   nombre: string;
   telefono: string;
   servicio: string; // slug
-  modalidad: string;
+  zona: string;
+  direccion: string;
   fecha: string; // YYYY-MM-DD
   hora: string; // HH:mm
 };
@@ -29,10 +30,11 @@ export function whatsappAppointmentLink(a: AppointmentSummary) {
     services.find((s) => s.slug === a.servicio)?.nombre ?? a.servicio;
   const fechaLegible = formatDateEs(a.fecha);
   const msg =
-    `Hola ${site.nombreCorto}, quiero confirmar mi cita:\n\n` +
+    `Hola ${site.nombreCorto}, quiero confirmar mi cita a domicilio:\n\n` +
     `• Nombre: ${a.nombre}\n` +
     `• Servicio: ${nombreServicio}\n` +
-    `• Modalidad: ${a.modalidad}\n` +
+    `• Zona: ${a.zona}\n` +
+    `• Dirección: ${a.direccion}\n` +
     `• Fecha: ${fechaLegible}\n` +
     `• Hora: ${a.hora}\n` +
     `• Teléfono: ${a.telefono}`;

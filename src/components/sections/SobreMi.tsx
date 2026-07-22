@@ -32,7 +32,7 @@ export function SobreMi() {
 
         <Reveal className="order-1 lg:order-2" delay={0.1}>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl bg-accent-50 shadow-lift ring-1 ring-sand-200 lg:ml-auto">
-            {/* PLACEHOLDER: foto secundaria o de consultorio */}
+            {/* PLACEHOLDER: foto secundaria (en sesión / trabajando) */}
             <Image
               src="/profesional.svg"
               alt={`${site.nombreCompleto} en consulta`}

@@ -1,7 +1,9 @@
 import { z } from "zod";
 import { services } from "@/content/services";
+import { site } from "@/lib/site-config";
 
 const serviceSlugs = services.map((s) => s.slug) as [string, ...string[]];
+const zonaValues = site.zonas as unknown as [string, ...string[]];
 
 /** Validación de una cita — mensajes en español, claros para el paciente. */
 export const appointmentSchema = z.object({
@@ -23,9 +25,14 @@ export const appointmentSchema = z.object({
   servicio: z.enum(serviceSlugs, {
     errorMap: () => ({ message: "Elige el motivo de tu consulta." }),
   }),
-  modalidad: z.enum(["consultorio", "domicilio"], {
-    errorMap: () => ({ message: "Elige consultorio o domicilio." }),
+  zona: z.enum(zonaValues, {
+    errorMap: () => ({ message: "Elige tu zona de atención." }),
   }),
+  direccion: z
+    .string()
+    .trim()
+    .min(5, "Escribe la dirección donde te atenderé.")
+    .max(200, "La dirección es demasiado larga."),
   fecha: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Elige una fecha en el calendario."),

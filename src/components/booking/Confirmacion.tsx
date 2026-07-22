@@ -17,7 +17,8 @@ export function Confirmacion({ cita }: { cita: AppointmentInput }) {
     nombre: cita.nombre,
     telefono: cita.telefono,
     servicio: cita.servicio,
-    modalidad: cita.modalidad,
+    zona: cita.zona,
+    direccion: cita.direccion,
     fecha: cita.fecha,
     hora: cita.hora,
   });
@@ -49,7 +50,8 @@ export function Confirmacion({ cita }: { cita: AppointmentInput }) {
       <dl className="mt-8 space-y-3 rounded-2xl border border-sand-200 bg-white p-6 text-left shadow-soft">
         <Row label="Nombre" value={cita.nombre} />
         <Row label="Servicio" value={nombreServicio} />
-        <Row label="Modalidad" value={cita.modalidad} capitalize />
+        <Row label="Zona" value={cita.zona} />
+        <Row label="Dirección" value={cita.direccion} />
         <Row label="Fecha" value={formatDateEs(cita.fecha)} capitalize />
         <Row label="Hora" value={cita.hora} />
       </dl>

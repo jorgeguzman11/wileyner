@@ -52,7 +52,9 @@ create table if not exists public.appointments (
   telefono    text not null,
   email       text not null,
   service_id  uuid references public.services(id) on delete set null,
-  modalidad   text not null check (modalidad in ('consultorio','domicilio')),
+  -- Atención 100% a domicilio: zona de cobertura + dirección de la visita.
+  zona        text not null,
+  direccion   text not null,
   fecha       date not null,
   hora        time not null,
   motivo      text,
@@ -120,10 +122,7 @@ create policy blocked_dates_select_public on public.blocked_dates
 -- (La confirmación de horas ocupadas la calcula el servidor con service_role.)
 drop policy if exists appointments_insert_public on public.appointments;
 create policy appointments_insert_public on public.appointments
-  for insert with check (
-    estado = 'pendiente'
-    and modalidad in ('consultorio','domicilio')
-  );
+  for insert with check (estado = 'pendiente');
 -- Sin política de SELECT/UPDATE/DELETE para anon: quedan denegadas.
 
 -- ---- TESTIMONIALS: leer sólo aprobados; crear siempre como NO aprobado -------

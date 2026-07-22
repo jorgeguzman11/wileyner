@@ -14,9 +14,9 @@ export const faq: FaqItem[] = [
       "Una entrevista sobre tu historia y tus objetivos, una valoración física del movimiento y la zona afectada, y la propuesta de un plan de tratamiento individualizado con metas claras.",
   },
   {
-    pregunta: "¿Atiendes a domicilio?",
+    pregunta: "¿Cómo funciona la atención a domicilio?",
     respuesta:
-      "Sí. Puedes elegir consultorio o domicilio al agendar. La atención a domicilio está disponible en las zonas de cobertura; confírmame tu ubicación por WhatsApp para coordinar.",
+      "Toda la atención es a domicilio: voy hasta tu casa con lo necesario para la sesión. Al agendar eliges tu zona e indicas la dirección; si tu zona no aparece en la lista, escríbeme por WhatsApp y lo coordinamos.",
   },
   {
     pregunta: "¿Cuántas sesiones voy a necesitar?",

@@ -10,26 +10,23 @@ export function Contacto() {
     <section id="contacto" className="section-pad scroll-mt-20">
       <div className="container-content">
         <SectionHeading
-          eyebrow="Contacto y ubicación"
-          title="Estoy para ayudarte"
-          intro="Agenda en línea o escríbeme directamente. Atención en consultorio y a domicilio."
+          eyebrow="Contacto y cobertura"
+          title="Voy hasta donde estés"
+          intro="Atención de fisioterapia 100% a domicilio. Agenda en línea o escríbeme directamente."
           id="contacto-title"
         />
 
         <div className="grid gap-8 lg:grid-cols-2">
           <Reveal className="space-y-4">
             <ul className="space-y-4">
+              <InfoRow icon={<Home className="h-5 w-5" />} label="Servicio">
+                Fisioterapia a domicilio — voy hasta tu casa
+              </InfoRow>
               <InfoRow icon={<Clock className="h-5 w-5" />} label="Horario">
                 {site.horarioTexto}
               </InfoRow>
-              <InfoRow icon={<Home className="h-5 w-5" />} label="Modalidad">
-                Consultorio y atención a domicilio
-              </InfoRow>
               <InfoRow icon={<MapPin className="h-5 w-5" />} label="Zonas de atención">
                 {site.zonas.join(" · ")}
-              </InfoRow>
-              <InfoRow icon={<MapPin className="h-5 w-5" />} label="Dirección">
-                {site.direccion}
               </InfoRow>
             </ul>
 
@@ -50,15 +47,40 @@ export function Contacto() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-sand-200 shadow-soft">
-              {/* PLACEHOLDER: reemplaza mapaEmbedUrl con el embed real del consultorio */}
-              <iframe
-                title={`Ubicación de ${site.nombreCorto} en ${site.ciudadPrincipal}`}
-                src={site.mapaEmbedUrl}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="aspect-[4/3] w-full"
-              />
+            <div className="flex h-full flex-col rounded-2xl border border-sand-200 bg-white p-8 shadow-soft">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-50 text-accent-500">
+                <Home className="h-6 w-6" />
+              </span>
+              <h3 className="mt-5 font-display text-xl font-medium text-ink">
+                Zonas de cobertura
+              </h3>
+              <p className="mt-2 text-pretty leading-relaxed text-ink-soft">
+                Atiendo a domicilio en estas zonas. Al agendar eliges la tuya e
+                indicas la dirección de la visita.
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {site.zonas.map((z) => (
+                  <li
+                    key={z}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-accent-100 bg-accent-50/60 px-3 py-1.5 text-sm text-accent-700"
+                  >
+                    <MapPin className="h-3.5 w-3.5" />
+                    {z}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm text-ink-muted">
+                ¿No ves tu zona?{" "}
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-accent-600 underline-offset-4 hover:underline"
+                >
+                  Escríbeme por WhatsApp
+                </a>{" "}
+                y lo coordinamos.
+              </p>
             </div>
           </Reveal>
         </div>
