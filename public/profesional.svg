@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1200" viewBox="0 0 960 1200" role="img" aria-label="Foto del profesional (placeholder)">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef4f1"/>
+      <stop offset="1" stop-color="#d6e6de"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)"/>
+  <g fill="#2f6b5e" opacity="0.85">
+    <circle cx="480" cy="470" r="150"/>
+    <path d="M240 1010c0-133 108-240 240-240s240 107 240 240v40H240z"/>
+  </g>
+  <text x="480" y="1130" font-family="Georgia, serif" font-size="34" fill="#255649" text-anchor="middle" opacity="0.7">PLACEHOLDER · Reemplaza por la foto real</text>
+</svg>
