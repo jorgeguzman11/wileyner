@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --focus-ring: theme("colors.accent.500");
+    /* Curvas de easing fuertes (Emil Kowalski) — más intención que las CSS por defecto */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el header fijo al saltar a una sección anclada */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-sand-50 text-ink antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Foco visible y consistente en todo lo interactivo (accesibilidad) */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: theme("colors.accent.200");
+    color: theme("colors.accent.700");
+  }
+
+  h1, h2, h3 {
+    @apply font-display text-balance;
+  }
+
+  /* Respeta la preferencia del sistema: sin movimiento -> sin animación */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Contenedor de sección con ancho de lectura cómodo y padding responsivo */
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+  .section-pad {
+    @apply py-20 sm:py-28;
+  }
+}
